@@ -1,0 +1,445 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px; /* Base font size for rem units (desktop default) */
+}
+
+body, html {
+  height: 100%;
+  font-family: 'Cinzel', serif;
+  overflow: hidden;
+}
+
+#scene1 {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#backgroundImage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('PICS/SRI.JPG');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+
+#heartWrapper {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex; /* Use flexbox for centering */
+  justify-content: center;
+  align-items: center;
+}
+
+#hint {
+  position: absolute;
+  top: 35vh; /* Use viewport height for vertical positioning */
+  width: 100%;
+  font-family: 'Almendra', cursive;
+  text-align: center;
+  font-weight: bold;
+  font-size: 2vw; /* Use viewport width for font size */
+  color: rgb(255, 255, 255);
+  text-shadow: 0 0 10px black;
+  z-index: 3;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+  box-sizing: border-box; /* Include padding in element's total width and height */
+  padding: 0 10px; /* Add some horizontal padding */
+}
+
+#leftHeart, #rightHeart {
+  position: absolute;
+  top: 60%;
+  width: 30vw; /* Make hearts responsive to viewport width */
+  max-width: 125px; /* Set a max-width for larger screens */
+  height: auto;
+  transform: translateY(-50%);
+  transition: all 1s ease, opacity 0.5s ease; /* Added opacity to transition */
+  cursor: pointer;
+}
+
+/* Reverting to original positioning logic for merged hearts */
+#leftHeart {
+  left: calc(50% - 70px); /* Original value, assuming 70px is half the intended merged width */
+}
+
+#rightHeart {
+  right: calc(50% - 70px); /* Original value, assuming 70px is half the intended merged width */
+}
+
+/* The above 70px values are fixed. Let's make them responsive based on the responsive width.
+   If the max-width is 140px, then 70px is half.
+   If the responsive width is 30vw, then half is 15vw.
+   So, the positioning should be based on the responsive width.
+*/
+#leftHeart {
+  left: calc(50% - min(15vw, 70px)); /* Use min() to ensure it doesn't go beyond 70px on large screens */
+}
+
+#rightHeart {
+  right: calc(50% - min(15vw, 70px)); /* Use min() to ensure it doesn't go beyond 70px on large screens */
+}
+
+#initials {
+  display: none;
+  position: absolute;
+  top: 140px;
+  left: 50%;
+  width: 90vw; /* Make initials responsive to viewport width */
+  max-width: 250px; /* Set a max-width for larger screens */
+  transform: translateX(-50%);
+  z-index: 4;
+  opacity: 0;
+  transition: opacity 1.5s ease;
+}
+
+/* Glow effect */
+.glow {
+  filter: drop-shadow(0 0 10px hotpink) drop-shadow(0 0 30px hotpink);
+  animation: glowText 2s ease-in-out infinite alternate;
+}
+
+video#bgVideo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+}
+
+/* Scene 2 styles */
+#backgroundVideo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+  background-color: black;
+  display: none;
+}
+
+/* Removed styles for #startOverlay as per user request */
+/* #startOverlay {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+  height: auto;
+  /* Removed background */
+  #startOverlay {
+  color: #ffffff;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  font-family: 'Cinzel', serif;
+  z-index: 999;
+  cursor: pointer;
+  text-align: center;
+  /*text-shadow: 0 0 12px #ffffff, 0 0 20px #ffffff, 0 0 30px #ff69b4;*/
+  text-shadow: 0 0 8px #0c0000, 0 0 14px #060000;
+  animation: pulseGlow 2s infinite;
+  padding: 0;
+  border-radius: 0;
+} */
+
+.invite-top {
+  position: absolute;
+  top: 50%; /* Changed from 5% to 50% for vertical centering */
+  left: 50%;
+  transform: translate(-50%, -50%); /* Added translateY(-50%) for vertical centering */
+  text-align: center;
+  z-index: 2;
+  width: 90%; /* Make it responsive */
+  max-width: 800px; /* Limit width on very large screens */
+  padding: 10px; /* Add some padding */
+  display: none;
+  margin: 0 auto; /* Center the container itself */
+}
+
+/* Desktop Default Font Sizes */
+#line1 {
+
+  position: absolute;
+  top: 30%; /* Position it a bit below the top */
+  left: 50%;
+  transform: translateX(-50%); /* Only center horizontally */
+  font-size: 1.7rem; /* Original desktop size */
+  font-family: 'Quintessential', cursive;
+  margin: 0;
+  color: #ffffff; 
+  letter-spacing: 2px;
+  font-weight: bold;
+  /*text-shadow: 1px 1px 2px #00000080;*/
+  text-shadow: 0 0 8px #0c0000, 0 0 14px #060000;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 1.5s ease;
+  z-index: 3; /* Ensure it's above other elements */
+}
+
+.invite-top h1 {
+  top: 40%;
+  font-size: 3.0rem; /* Original desktop size */
+  font-family: 'Quintessential', cursive;
+  margin: 15px auto; /* Center the element and add vertical spacing */
+  color: #ffffff; 
+  letter-spacing: 2px;
+  font-weight: bold;
+  /*text-shadow: 1px 1px 2px #00000080;*/
+  text-shadow: 0 0 8px #0c0000, 0 0 14px #060000;
+  text-align: center; /* Ensure text is centered */
+  opacity: 0;
+  transition: opacity 1.5s ease;
+}
+
+.invite-top h2 {
+  font-size: 7.5rem; /* Original desktop size */
+  font-family: 'Almendra', cursive;
+  font-weight: normal;
+  color: #752c64; /* Deep coffee brown */
+  font-style: italic;
+  font-weight: bold;
+  text-shadow: 0 0 8px #ffffff, 0 0 14px #ffffff;
+  text-align: center; /* Ensure text is centered */
+  margin: 10px auto; /* Center the element and add vertical spacing */
+  opacity: 0;
+  transition: opacity 1.5s ease;
+}
+
+.invite-top p {
+  font-size: 1.3rem; /* Original desktop size */
+  color: #ffffff; /* Darker muted brown */
+  margin: 5px auto; /* Center the element and add vertical spacing */
+  font-family: 'Quintessential', cursive;
+  font-weight: bold;
+  /*text-shadow: 1px 1px 1px #00000040;*/
+  text-shadow: 0 0 8px #0c0000, 0 0 14px #060000;
+  text-align: center; /* Ensure text is centered */
+  opacity: 0;
+  transition: opacity 1.5s ease;
+}
+
+#blessing {
+  font-family: 'Parisienne', cursive;
+  font-size: 2.0rem; /* Original desktop size */
+  color: #020c4d;
+  text-align: center;
+  margin-top: 20px;
+  text-shadow: 0 0 8px #ffffff, 0 0 14px #ffffff;
+  opacity: 0;
+  font-weight: bold;
+  transition: opacity 1.5s ease;
+ }
+
+.invite-top h1,
+.invite-top h2,
+.invite-top p {
+  opacity: 0;
+  transition: opacity 1.5s ease;
+}
+
+@keyframes glowText {
+  0% {
+    text-shadow: 0 0 8px #ffffff, 0 0 14px #ffffff;
+  }
+  100% {
+    text-shadow: 0 0 14px #ffffff, 0 0 20px #ffffff;
+  }
+}
+
+@keyframes pulseGlow {
+  0% {
+    text-shadow: 0 0 8px #0c0000, 0 0 14px #060000;
+  }
+  100% {
+    text-shadow: 0 0 14px #0c0000, 0 0 20px #060000;
+  }
+}
+
+@keyframes floatIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.float-in {
+  animation: floatIn 1.5s ease forwards;
+}
+
+#venueButton {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 12px 18px;
+  font-size: 3rem;
+  font-family: 'Cinzel', serif;
+  font-weight: bold;
+  background: rgb(255, 255, 255);
+  color: rgb(255, 0, 0);
+  border: 1px solid rgb(0, 24, 83);
+  border-radius: 30px;
+  text-decoration: none;
+  z-index: 1000;
+  text-shadow: 0 0 8px #ffffff, 0 0 14px #ffffff;
+  box-shadow: 0 0 10px rgb(255, 255, 255);
+  transition: background 0.3s, transform 0.2s;
+  display: none;
+}
+
+#venueButton:hover {
+  background: rgb(255, 255, 255);
+  transform: scale(1.05);
+}
+
+/* Media Queries for finer control on smaller screens */
+@media (max-width: 768px) {
+  #hint {
+    font-size: 5vw;
+  }
+  #leftHeart, #rightHeart {
+    width: 35vw; /* Slightly larger on tablets */
+    left: calc(50% - min(17.5vw, 70px)); /* Adjust based on new width */
+    right: calc(50% - min(17.5vw, 70px)); /* Adjust based on new width */
+  }
+  #initials {
+    width: 80vw;
+  }
+  
+  /* Scene 2 media queries */
+  html {
+    font-size: 14px; /* Base font size for tablets, affects rem units */
+  }
+
+  .invite-top {
+    /* top: 3%; Removed as it's now handled by 50% and translate(-50%, -50%) */
+    width: 95%; /* Take more width on smaller screens */
+    padding: 10px;
+  }
+
+  /* Larger font sizes for tablets */
+  .invite-top h1 {
+    font-size: 5vw; /* Example: 5vw for h1 */
+    margin: 10px 0 8px;
+  }
+
+  .invite-top h2 {
+    font-size: 8vw; /* Example: 8vw for h2 */
+  }
+
+  .invite-top p {
+    font-size: 3.5vw; /* Example: 3.5vw for p */
+  }
+
+  #blessing {
+    font-size: 4.5vw; /* Example: 4.5vw for blessing */
+    margin-top: 15px;
+  }
+
+  #venueButton {
+    bottom: 15px;
+    right: 15px;
+    font-size: 0.9rem;
+    padding: 10px 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  #hint {
+    font-size: 6vw;
+    top: 3vh;
+  }
+  #leftHeart, #rightHeart {
+    width: 40vw; /* Larger on phones */
+    left: calc(50% - min(20vw, 70px)); /* Adjust based on new width */
+    right: calc(50% - min(20vw, 70px)); /* Adjust based on new width */
+  }
+  #initials {
+    width: 95vw;
+  }
+  
+  /* Scene 2 media queries */
+  html {
+    font-size: 12px; /* Further adjust base font size for phones */
+  }
+
+  .invite-top {
+    /* top: 2%; Removed as it's now handled by 50% and translate(-50%, -50%) */
+    padding: 5px;
+  }
+
+  /* Even larger font sizes for phones */
+  .invite-top h1 {
+    font-size: 6vw; /* Larger on phones */
+  }
+
+  .invite-top h2 {
+    font-size: 10vw; /* Larger on phones */
+  }
+
+  .invite-top p {
+    font-size: 4.5vw; /* Larger on phones */
+  }
+
+  #blessing {
+    font-size: 5.5vw; /* Larger on phones */
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 320px) {
+  #hint {
+    font-size: 7vw;
+  }
+  #leftHeart, #rightHeart {
+    width: 45vw; /* Even larger on very small phones */
+    left: calc(50% - min(22.5vw, 70px)); /* Adjust based on new width */
+    right: calc(50% - min(22.5vw, 70px)); /* Adjust based on new width */
+  }
+  
+  /* Scene 2 media queries */
+  html {
+    font-size: 10px; /* Smallest base font size for very small phones */
+  }
+
+  /* Max font sizes for very small phones */
+  .invite-top h1 {
+    font-size: 7vw;
+  }
+
+  .invite-top h2 {
+    font-size: 12vw;
+  }
+
+  .invite-top p {
+    font-size: 5.5vw;
+  }
+
+  #blessing {
+    font-size: 6.5vw;
+  }
+}

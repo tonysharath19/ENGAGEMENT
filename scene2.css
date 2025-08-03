@@ -1,0 +1,274 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px; /* Base font size for rem units (desktop default) */
+}
+
+body, html {
+  height: 100%;
+  font-family: 'Cinzel', serif;
+  overflow: hidden;
+}
+
+#backgroundImage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('floral-bg.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+
+#startOverlay {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+  height: auto;
+  /* Removed background */
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  font-family: 'Cinzel', serif;
+  z-index: 999;
+  cursor: pointer;
+  text-align: center;
+  /*text-shadow: 0 0 12px #ffffff, 0 0 20px #ffffff, 0 0 30px #ff69b4;*/
+  text-shadow: 0 0 8px #0c0000, 0 0 14px #060000;
+  animation: pulseGlow 2s infinite;
+  padding: 0;
+  border-radius: 0;
+}
+
+#backgroundVideo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+  background-color: black;
+}
+
+.invite-top {
+  position: absolute;
+  top: 50%; /* Changed from 5% to 50% for vertical centering */
+  left: 50%;
+  transform: translate(-50%, -50%); /* Added translateY(-50%) for vertical centering */
+  text-align: center;
+  z-index: 2;
+  width: 90%; /* Make it responsive */
+  max-width: 800px; /* Limit width on very large screens */
+  padding: 10px; /* Add some padding */
+}
+
+/* Desktop Default Font Sizes */
+.invite-top h1 {
+  font-size: 2.0rem; /* Original desktop size */
+  font-family: 'Quintessential', cursive;
+  margin: 15px 0 10px;
+  color: #ffffff; 
+  letter-spacing: 2px;
+  font-weight: bold;
+  /*text-shadow: 1px 1px 2px #00000080;*/
+  text-shadow: 0 0 8px #0c0000, 0 0 14px #060000;
+}
+
+.invite-top h2 {
+  font-size: 7.5rem; /* Original desktop size */
+  font-family: 'Almendra', cursive;
+  font-weight: normal;
+  color: #752c64; /* Deep coffee brown */
+  font-style: italic;
+  font-weight: bold;
+  text-shadow: 0 0 8px #ffffff, 0 0 14px #ffffff;
+}
+
+.invite-top p {
+  font-size: 1.3rem; /* Original desktop size */
+  color: #ffffff; /* Darker muted brown */
+  margin: 5px 0;
+  font-family: 'Quintessential', cursive;
+  font-weight: bold;
+  /*text-shadow: 1px 1px 1px #00000040;*/
+  text-shadow: 0 0 8px #0c0000, 0 0 14px #060000;
+}
+
+#blessing {
+  font-family: 'Parisienne', cursive;
+  font-size: 2.0rem; /* Original desktop size */
+  color: #020c4d;
+  text-align: center;
+  margin-top: 20px;
+  text-shadow: 0 0 8px #ffffff, 0 0 14px #ffffff;
+  opacity: 0;
+  font-weight: bold;
+}
+
+.invite-top h1,
+.invite-top h2,
+.invite-top p {
+  opacity: 0;
+  transition: opacity 1.5s ease;
+}
+
+.glow {
+  animation: glowText 2s ease-in-out infinite alternate;
+}
+
+@keyframes glowText {
+  0% {
+    text-shadow: 0 0 8px #ffffff, 0 0 14px #ffffff;
+  }
+  100% {
+    text-shadow: 0 0 14px #ffffff, 0 0 20px #ffffff;
+  }
+}
+
+@keyframes floatIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.float-in {
+  animation: floatIn 1.5s ease forwards;
+}
+
+.invite-top h1,
+.invite-top h2,
+.invite-top p {
+  opacity: 0;
+}
+
+#venueButton {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 12px 18px;
+  font-size: 3rem;
+  font-family: 'Cinzel', serif;
+  font-weight: bold;
+  background: rgb(255, 255, 255);
+  color: rgb(255, 0, 0);
+  border: 1px solid rgb(0, 24, 83);
+  border-radius: 30px;
+  text-decoration: none;
+  z-index: 1000;
+  text-shadow: 0 0 8px #ffffff, 0 0 14px #ffffff;
+  box-shadow: 0 0 10px rgb(255, 255, 255);
+  transition: background 0.3s, transform 0.2s;
+}
+
+#venueButton:hover {
+  background: rgb(255, 255, 255);
+  transform: scale(1.05);
+}
+
+/* Media Queries for mobile responsiveness */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px; /* Base font size for tablets, affects rem units */
+  }
+
+  .invite-top {
+    /* top: 3%; Removed as it's now handled by 50% and translate(-50%, -50%) */
+    width: 95%; /* Take more width on smaller screens */
+    padding: 10px;
+  }
+
+  /* Larger font sizes for tablets */
+  .invite-top h1 {
+    font-size: 5vw; /* Example: 5vw for h1 */
+    margin: 10px 0 8px;
+  }
+
+  .invite-top h2 {
+    font-size: 8vw; /* Example: 8vw for h2 */
+  }
+
+  .invite-top p {
+    font-size: 3.5vw; /* Example: 3.5vw for p */
+  }
+
+  #blessing {
+    font-size: 4.5vw; /* Example: 4.5vw for blessing */
+    margin-top: 15px;
+  }
+
+  #venueButton {
+    bottom: 15px;
+    right: 15px;
+    font-size: 0.9rem;
+    padding: 10px 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 12px; /* Further adjust base font size for phones */
+  }
+
+  .invite-top {
+    /* top: 2%; Removed as it's now handled by 50% and translate(-50%, -50%) */
+    padding: 5px;
+  }
+
+  /* Even larger font sizes for phones */
+  .invite-top h1 {
+    font-size: 6vw; /* Larger on phones */
+  }
+
+  .invite-top h2 {
+    font-size: 10vw; /* Larger on phones */
+  }
+
+  .invite-top p {
+    font-size: 4.5vw; /* Larger on phones */
+  }
+
+  #blessing {
+    font-size: 5.5vw; /* Larger on phones */
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 320px) {
+  html {
+    font-size: 10px; /* Smallest base font size for very small phones */
+  }
+
+  /* Max font sizes for very small phones */
+  .invite-top h1 {
+    font-size: 7vw;
+  }
+
+  .invite-top h2 {
+    font-size: 12vw;
+  }
+
+  .invite-top p {
+    font-size: 5.5vw;
+  }
+
+  #blessing {
+    font-size: 6.5vw;
+  }
+}

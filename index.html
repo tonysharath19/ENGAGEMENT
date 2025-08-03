@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Engagement Invitation</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Almendra:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Quintessential&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="scene1">
+    <div id="backgroundImage"></div>
+    <img id="initials" src="PICS/GA.png" alt="G ♥ A" />
+
+    <div id="heartWrapper">
+      <div id="hint"><br>Tap the heart to see magic</div>
+      <img id="leftHeart" src="left-heart.svg" alt="Left Heart" />
+      <img id="rightHeart" src="right-heart.svg" alt="Right Heart" />
+    </div>
+  </div>
+
+  <!-- Scene 2 elements -->
+  <video id="backgroundVideo" playsinline loop>
+    <source src="VIDS/Page2.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- Click-to-start Overlay -->
+  <!-- Removed startOverlay as per user request -->
+
+  <!-- Your Original Invitation Text -->
+  <div class="invite-top">
+    <h1 id="line1">A Ring, A Promise, A Ceremony</h1>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <h2 id="line2">Ashok ❤️ Geetha</h2><br>
+    <p id="line3">20th August 2025 — 11 AM</p><br>
+    <p id="line4">Kadamba Gardenia, CSD Building, HMT colony, 
+      <br> 2nd Stage, Bengaluru, Karnataka 560013</p><br>
+    <p id="blessing">“ With hearts entwined and dreams anew, bless this love as it welcomes you! ”</p>
+  </div>
+
+  <a href="https://maps.app.goo.gl/Bqod2SoGVYVNU2iLA?g_st=aw" target="_blank" id="venueButton">
+    Venue
+  </a>
+
+  <audio id="bgm" src="AUDIO/song.mp3" preload="auto"></audio>
+  <script src="script.js"></script>
+</body>
+</html>
