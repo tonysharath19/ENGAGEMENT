@@ -183,7 +183,7 @@ video#bgVideo {
   top: 30%; /* Position it a bit below the top */
   left: 50%;
   transform: translateX(-50%); /* Only center horizontally */
-  font-size: 2.0rem; /* Original desktop size */
+  font-size: 1.7rem; /* Original desktop size */
   font-family: 'Quintessential', cursive;
   margin: 0;
   color: #ffffff; 
