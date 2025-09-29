@@ -7,24 +7,47 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Background video (muted, autoplay, loop) -->
-  <video id="backgroundVideo" playsinline autoplay muted loop>
-    <source src="VIDS/eng.mp4" type="video/mp4" />
-    Your browser does not support the video tag.
-  </video>
+  <header>
+    <button id="hamburger">☰</button>
+    <div id="headerText">Tarun & Kriti</div>
+  </header>
 
-  <!-- Secondary video (hidden initially, plays on heart click) -->
-  <video id="eng2Video" playsinline loop muted style="display: none;">
-    <source src="VIDS/eng2.mp4" type="video/mp4" />
-    Your browser does not support the video tag.
-  </video>
+  <div id="blurOverlay"></div>
 
-  <!-- Hearts container -->
-  <div id="heartWrapper">
-    <div id="hint">Tap the heart </div><br>
-    <img id="leftHeart" src="left-heart.svg" alt="Left Heart" />
-    <img id="rightHeart" src="right-heart.svg" alt="Right Heart" />
-  </div>
+  <nav id="sideMenu">
+    <button id="closeMenu">×</button>
+    <ul>
+      <li><a href="https://www.google.com/maps" target="_blank">Venue</a></li>
+      <li><a href="https://raayacreations.onrender.com" target="_blank">About us</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <div id="videoContainer">
+      <!-- Background video (muted, autoplay, loop) -->
+      <video id="backgroundVideo" playsinline autoplay muted loop>
+        <source src="VIDS/eng.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      <!-- Secondary video (hidden initially, plays on heart click) -->
+      <video id="eng2Video" playsinline loop muted style="display: none;">
+        <source src="VIDS/eng2.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      <!-- Hearts container -->
+      <div id="heartWrapper">
+        <div id="hint"><br><br>Tap the heart </div><br>
+        <img id="leftHeart" src="left-heart.svg" alt="Left Heart" />
+        <img id="rightHeart" src="right-heart.svg" alt="Right Heart" />
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 | All rights reserved</p>
+  </footer>
 
   <script src="script.js"></script>
 </body>
